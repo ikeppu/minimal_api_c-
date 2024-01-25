@@ -1,4 +1,5 @@
-﻿using GameStore.Entities;
+﻿using System.Reflection;
+using GameStore.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.Data
@@ -9,8 +10,14 @@ namespace GameStore.Data
             : base(options)
         {
 
+
         }
 
         public DbSet<Game> Games => Set<Game>();
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
     }
 }
