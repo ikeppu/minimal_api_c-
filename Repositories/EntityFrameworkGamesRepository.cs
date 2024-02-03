@@ -7,10 +7,14 @@ namespace GameStore.Repositories
     public class EntityFrameworkGamesRepository : IGamesRepository
     {
         private readonly GameStoreContext _dbContext;
+        private readonly ILogger<EntityFrameworkGamesRepository> _logger;
 
-        public EntityFrameworkGamesRepository(GameStoreContext dbContext)
+        public EntityFrameworkGamesRepository(
+            GameStoreContext dbContext,
+            ILogger<EntityFrameworkGamesRepository> logger)
         {
             _dbContext = dbContext;
+            _logger = logger;
         }
 
         public async Task<IEnumerable<Game>> GetAllAsync()

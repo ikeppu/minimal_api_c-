@@ -2,11 +2,21 @@
 
 namespace GameStore
 {
-    public record GameDto(
+    public record GameDtoV1(
         int Id,
         string Name,
         string Genre,
         decimal Price,
+        DateTime ReleaseDate,
+        string imageUri
+    );
+
+    public record GameDtoV2(
+        int Id,
+        string Name,
+        string Genre,
+        decimal Price,
+        decimal RetailPrice,
         DateTime ReleaseDate,
         string imageUri
     );

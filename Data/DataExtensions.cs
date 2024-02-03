@@ -12,7 +12,12 @@ namespace GameStore.Data
                 var db = scope.ServiceProvider.GetRequiredService<GameStoreContext>();
 
                 await db.Database.MigrateAsync();
+                var logger = serviceProvider.GetRequiredService<ILoggerFactory>()
+                    .CreateLogger("DB Initializer");
+
+                logger.LogInformation(5, "The database is ready");
             }
+
         }
 
         public static IServiceCollection AddRepositories(
